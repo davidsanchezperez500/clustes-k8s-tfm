@@ -1,7 +1,8 @@
 #!/bin/bash
-
+#Creo namespace
 kubectl create namespace spark
 
+#Creo las variables de entorno
 PROJECT=$(gcloud config get-value core/project)
 CLUSTER=cluster-dataproc-gke
 REGION=us-central1
