@@ -1,4 +1,5 @@
 #!/bin/bash
+
 kubectl create namespace spark
 
 PROJECT=$(gcloud config get-value core/project)
@@ -15,4 +16,3 @@ helm install  "${DEPLOYMENT}" dataproc/dataproc-sparkoperator \
 --set bucket="${BUCKET}" \
 --set clusterName="${CLUSTER}" \
 --set namespace="${NAMESPACE}"
-  
