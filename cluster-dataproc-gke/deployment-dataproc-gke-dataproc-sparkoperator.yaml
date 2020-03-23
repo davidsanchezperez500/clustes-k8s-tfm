@@ -1,0 +1,116 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+  creationTimestamp: "2020-03-23T18:55:29Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: deployment-dataproc-gke
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: dataproc-sparkoperator
+    helm.sh/chart: dataproc-sparkoperator-1.4.23
+  name: deployment-dataproc-gke-dataproc-sparkoperator
+  namespace: spark
+  resourceVersion: "35933"
+  selfLink: /apis/apps/v1/namespaces/spark/deployments/deployment-dataproc-gke-dataproc-sparkoperator
+  uid: dd622406-6d37-11ea-817f-42010a8000a6
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dataproc-sparkoperator
+      app.kubernetes.io/version: 1.4.23-deb9
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "10254"
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      initializers:
+        pending: null
+      labels:
+        app.kubernetes.io/name: dataproc-sparkoperator
+        app.kubernetes.io/version: 1.4.23-deb9
+    spec:
+      containers:
+      - args:
+        - -v=2
+        - -namespace=spark
+        - -ingress-url-format=
+        - -install-crds=true
+        - -controller-threads=10
+        - -resync-interval=30
+        - -logtostderr
+        - -enable-metrics=true
+        - -metrics-labels=app_type
+        - -metrics-port=10254
+        - -metrics-endpoint=/metrics
+        - -metrics-prefix=
+        image: gcr.io/dataproc-2f10d78d114f6aaec7646/spark-operator:1.4.23-deb9
+        imagePullPolicy: IfNotPresent
+        name: sparkoperator
+        ports:
+        - containerPort: 10254
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - env:
+        - name: PROJECT_ID
+          value: dataproc-gke
+        - name: CLUSTER_UUID
+        - name: CLUSTER_NAME
+          value: cluster-dataproc-gke
+        - name: CONFIG_BUCKET
+          value: bucket-dataproc-gke
+        - name: REGION
+          value: us-central1
+        - name: DATAPROC_CONTROL_ENDPOINT
+        - name: DATAPROC_ENDPOINT
+        - name: WHITELIST_TOKEN
+          value: af447856907ac92bc1e3f7c4677cb637067ac09b7cd727959c7e8a298f870c29
+        - name: DEFAULT_SPARK_IMAGE
+          value: gcr.io/dataproc-2f10d78d114f6aaec7646/spark:1.4.23-deb9
+        - name: SPARK_SERVICE_ACCOUNT
+          value: deployment-dataproc-gke-spark
+        - name: SPARK_PODS_NAMESPACE
+          value: spark
+        image: gcr.io/dataproc-2f10d78d114f6aaec7646/dataproc-agent:1.4.23
+        imagePullPolicy: Always
+        name: dataproc-agent
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: deployment-dataproc-gke-dataproc-sparkoperator
+      serviceAccountName: deployment-dataproc-gke-dataproc-sparkoperator
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-03-23T19:03:54Z"
+    lastUpdateTime: "2020-03-23T19:03:54Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-03-23T18:55:29Z"
+    lastUpdateTime: "2020-03-23T19:03:54Z"
+    message: ReplicaSet "deployment-dataproc-gke-dataproc-sparkoperator-6f957bb565"
+      has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
