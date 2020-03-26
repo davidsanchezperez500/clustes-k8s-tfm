@@ -11,7 +11,7 @@ $ helm repo add dataproc http://storage.googleapis.com/dataproc-helm-charts
 
 
 ### jobs-pyspark
-Contiene los archivos python  y los jobs para ejecutarlos en dataproc, esta será una carpeta común a todos los proyectos
+Contiene los archivos python  y los Jobs para ejecutarlos en dataproc, esta será una carpeta común a todos los proyectos
 
 ### terraform-clusters
-Contiene los archivos de terraform de la infraestructura de los clusters
+Contiene los archivos de terraform de la infraestructura de los clusters 
