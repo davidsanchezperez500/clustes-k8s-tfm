@@ -1,8 +1,11 @@
 #!/bin/bash
+
+# Me conecto al proyecto
 gcloud config set project dataproc-gke
 gcloud config set compute/region us-central1
 gcloud config set compute/zone us-central1-b
 
+#Creo el cluste en gke
 gcloud beta container clusters create cluster-dataproc-gke \
 --machine-type n1-standard-2 \
 --preemptible \
