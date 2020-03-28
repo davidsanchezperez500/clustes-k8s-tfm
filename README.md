@@ -14,4 +14,6 @@ $ helm repo add dataproc http://storage.googleapis.com/dataproc-helm-charts
 Contiene los archivos python  y los Jobs para ejecutarlos en dataproc, esta será una carpeta común a todos los proyectos
 
 ### terraform-clusters
-Contiene los archivos de terraform de la infraestructura de los clusters 
+Contiene los archivos de terraform de la infraestructura de los clusters
+Hay un archivo con variables globales global_vars.tf  con un enlace en las subcarpetas
+ln -sr global_vars.tf cluster-dataproc-gke/

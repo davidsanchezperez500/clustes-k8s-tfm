@@ -1,18 +1,28 @@
-resource "google_container_cluster" "cluster-dataproc-gke" {
-  name     = "${var.name_cluster}"
-  location = "${var.region}"
+provider "google" {
+  credentials = file("/home/david/private-keys/credential-terraform-dataproc-gke.json")
+}
 
-  # We can't create a cluster with no node pool defined, but we want to only use
-  # separately managed node pools. So we create the smallest possible default
-  # node pool and immediately delete it.
+resource "google_container_cluster" "cluster-dataproc-gke" {
+  project     = "${var.project_dataproc_gke}"
+  name        = "${var.name_cluster_dataproc_gke}"
+  location    = "${var.region}"
+
   remove_default_node_pool = true
   initial_node_count       = 1
 
+  master_auth {
+    username = ""
+    password = ""
 
-}
+    client_certificate_config {
+      issue_client_certificate = false
+    }
+  }
+  logging_service    = "logging.googleapis.com/kubernetes"
+  monitoring_service = "monitoring.googleapis.com/kubernetes"
 
 
-resource "google_container_node_pool" "cluster-dataproc-gke" {
+resource "google_container_node_pool" "cluster-dataproc-gke-node-pool" {
   name       = "${var.name_cluster}"
   location   = "${var.region}"
   cluster    = google_container_cluster.cluster-dataproc-gke

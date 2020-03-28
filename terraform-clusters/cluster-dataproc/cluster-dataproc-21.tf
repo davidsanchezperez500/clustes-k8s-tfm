@@ -1,5 +1,12 @@
-resource "google_dataproc_cluster" "cluster-dataproc-21" {
-  name   = "${var.name_cluster}"
+provider "google" {
+  project     = "${var.project_dataproc}"
+  region      = "${var.region}"
+  zone        = "${var.region}-b"
+  credentials = file("/home/david/private-keys/credential-terraform-dataproc-21.json")
+}
+
+resource "google_dataproc_cluster" "cluster-dataproc" {
+  name   = "${var.name_cluster_dataproc}"
   region = "${var.region}"
   labels = {
     foo = "bar"

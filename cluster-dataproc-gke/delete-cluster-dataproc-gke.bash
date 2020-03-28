@@ -11,13 +11,15 @@ REGION=$(gcloud config get-value compute/region)
 CLUSTER=cluster-$PROJECT
 DEPLOYMENT=deployment-$PROJECT
 
-#Elimino el cluster gke
-gcloud beta container clusters delete $CLUSTER \
---region $REGION \
-#--zone $REGION-b,$REGION-c,$REGION-a
+#Elimino el cluster dataproc
+gcloud dataproc clusters delete $CLUSTER
+
 
 #Elimino el deployment
 helm delete $PROJECT
 
-#Elimino el cluster dataproc
-gcloud dataproc clusters delete $CLUSTER
+
+#Elimino el cluster gke
+gcloud beta container clusters delete $CLUSTER \
+--region $REGION \
+#--zone $REGION-b,$REGION-c,$REGION-a
