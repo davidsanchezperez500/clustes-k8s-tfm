@@ -1,6 +1,11 @@
 #!/bin/bash
+# Me conecto al proyecto
+gcloud config set project dataproc-gke
+gcloud config set compute/region us-central1
+gcloud config set compute/zone us-central1-b
+
 #Creo namespace
-#kubectl create namespace spark
+kubectl create namespace spark
 
 #Creo las variables de entorno
 PROJECT=$(gcloud config get-value core/project)
