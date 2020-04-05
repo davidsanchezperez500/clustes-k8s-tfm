@@ -1,5 +1,7 @@
 config:
   configBucket: dataproc-staging-us-central1-242237202548-25fkfkwo
+  endpointConfig:
+    enableHttpPortAccess: true
   gceClusterConfig:
     serviceAccountScopes:
     - https://www.googleapis.com/auth/bigquery
@@ -15,11 +17,15 @@ config:
     diskConfig:
       bootDiskSizeGb: 100
       bootDiskType: pd-ssd
-    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-3-deb9-20200313-145333-rc01
+    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200313-145333-rc01
     machineTypeUri: https://www.googleapis.com/compute/v1/projects/dataproc-21/zones/us-central1-b/machineTypes/n1-standard-2
+    minCpuPlatform: AUTOMATIC
     numInstances: 1
   softwareConfig:
-    imageVersion: 1.3.54-debian9
+    imageVersion: 1.4.25-ubuntu18
+    optionalComponents:
+    - JUPYTER
+    - ANACONDA
     properties:
       capacity-scheduler:yarn.scheduler.capacity.root.default.ordering-policy: fair
       core:fs.gs.block.size: '134217728'
@@ -76,6 +82,7 @@ config:
     diskConfig:
       bootDiskSizeGb: 50
       bootDiskType: pd-ssd
-    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-3-deb9-20200313-145333-rc01
+    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200313-145333-rc01
     machineTypeUri: https://www.googleapis.com/compute/v1/projects/dataproc-21/zones/us-central1-b/machineTypes/n1-standard-2
+    minCpuPlatform: AUTOMATIC
     numInstances: 2

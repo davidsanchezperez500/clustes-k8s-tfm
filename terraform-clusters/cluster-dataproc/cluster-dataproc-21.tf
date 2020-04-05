@@ -1,5 +1,7 @@
 #Declaramos quien es
-provider "google" {
+#google-beta hay que exportar las credenciales
+#export GOOGLE_APPLICATION_CREDENTIALS=/home/david/private-keys/credential-terraform-dataproc-21.json
+provider "google-beta" {
   project     = "${var.project_dataproc}"
   region      = "${var.region}"
   zone        = "${var.region}-b"
@@ -7,8 +9,9 @@ provider "google" {
 }
 
 resource "google_dataproc_cluster" "cluster-dataproc" {
-  name   = "${var.name_cluster_dataproc}"
-  region = "${var.region}"
+  provider = "google-beta"
+  name     = "${var.name_cluster_dataproc}"
+  region   = "${var.region}"
   labels = {
     foo = "bar"
   }
@@ -38,7 +41,11 @@ resource "google_dataproc_cluster" "cluster-dataproc" {
 
     # Override or set some custom properties
     software_config {
-      image_version = "1.3.7-deb9"
+      image_version = "1.4-ubuntu18"
+      optional_components = [
+        "ANACONDA",
+        "JUPYTER"
+      ]
       override_properties = {
         "dataproc:dataproc.allow.zero.workers" = "true"
       }
