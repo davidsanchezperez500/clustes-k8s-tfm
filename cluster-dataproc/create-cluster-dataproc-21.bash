@@ -12,7 +12,6 @@ MACHINE_TIPE=n1-standard-2
 # Creo el cluster dataproc
 gcloud beta dataproc clusters create $CLUSTER \
 --optional-components=ANACONDA,JUPYTER \
---image-version=1.4 \
 --enable-component-gateway \
 --region $REGION \
 --zone $REGION-b \

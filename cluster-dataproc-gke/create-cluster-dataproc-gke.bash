@@ -24,4 +24,4 @@ gcloud beta container clusters create $CLUSTER \
 --disk-type pd-ssd \
 --disk-size 75 \
 --region $REGION \
---node-locations $REGION-b,$REGION-c,$REGION-a
+--node-locations $REGION-b,$REGION-c,$REGION-a \

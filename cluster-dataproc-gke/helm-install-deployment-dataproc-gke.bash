@@ -23,4 +23,5 @@ helm install  $DEPLOYMENT dataproc/dataproc-sparkoperator --namespace $NAMESPACE
 --set dataprocRegion=$REGION \
 --set sparkJobNamespace=$NAMESPACE \
 --set bucket=$BUCKET_NAME \
---set alphaWhitelistToken=$PROVIDED_TOKEN
+--set alphaWhitelistToken=$PROVIDED_TOKEN \
+--set operatorVersion=latest

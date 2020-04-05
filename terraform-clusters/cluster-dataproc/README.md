@@ -1,9 +1,9 @@
 ## Acceder a Jupyter Notebook
 
 ### 1. Creamos variables de entorno
-PROJECT=$(gcloud config get-value core/project) <br>
-CLUSTER_M=cluster-$PROJECT-m <br>
-REGION=$(gcloud config get-value dataproc/region) <br>
+PROJECT=$(gcloud config get-value core/project)
+CLUSTER_M=cluster-$PROJECT-m
+REGION=$(gcloud config get-value dataproc/region)
 PORT_JUPYTER=8123
 
 ### 2. Creamos un tunel SSH usando el puerto local 1080
