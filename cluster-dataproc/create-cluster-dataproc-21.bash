@@ -3,14 +3,18 @@ gcloud config set project dataproc-21
 gcloud config set dataproc/region us-central1
 
 
+# Declaro las variables
 PROJECT=$(gcloud config get-value core/project)
 CLUSTER=cluster-$PROJECT
 REGION=$(gcloud config get-value dataproc/region)
 MACHINE_TIPE=n1-standard-2
+BUCKET_NAME=bucket-$PROJECT
 
 
 # Creo el cluster dataproc
 gcloud beta dataproc clusters create $CLUSTER \
+--project $PROJECT \
+--bucket $BUCKET \
 --optional-components=ANACONDA,JUPYTER \
 --enable-component-gateway \
 --region $REGION \
@@ -23,7 +27,8 @@ gcloud beta dataproc clusters create $CLUSTER \
 --worker-boot-disk-type=pd-ssd \
 --worker-boot-disk-size 50 \
 --image-version 1.4-ubuntu18 \
---project $PROJECT
+--scopes 'https://www.googleapis.com/auth/cloud-platform'
+
 
 # Ver la descripcion del cluster
 gcloud beta dataproc clusters describe $CLUSTER --region=$REGION
