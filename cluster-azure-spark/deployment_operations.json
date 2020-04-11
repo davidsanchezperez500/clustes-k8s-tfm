@@ -1,0 +1,68 @@
+[
+  {
+    "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Resources/deployments/HDInsight__2020-04-11T14.43.57.626Z/operations/5FD89DF27A46EC25",
+    "operationId": "5FD89DF27A46EC25",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-04-11T14:57:59.1528789Z",
+      "duration": "PT13M31.6700772S",
+      "trackingId": "b3268fc3-f7d0-4d59-abec-cd0f7a8bb497",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.HDInsight/clusters/cluster-azure-spark",
+        "resourceType": "Microsoft.HDInsight/clusters",
+        "resourceName": "cluster-azure-spark"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Resources/deployments/HDInsight__2020-04-11T14.43.57.626Z/operations/27688708569C3A16",
+    "operationId": "27688708569C3A16",
+    "properties": {
+      "provisioningOperation": "Action",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-04-11T14:44:27.4166749Z",
+      "duration": "PT0.2146023S",
+      "trackingId": "cb8a820a-02e5-4716-bab3-6ead363abc78",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Storage/storageAccounts/clusterazureshdistorage",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "clusterazureshdistorage",
+        "actionName": "listKeys",
+        "apiVersion": "2015-05-01-preview"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Resources/deployments/HDInsight__2020-04-11T14.43.57.626Z/operations/93B058523F377BBC",
+    "operationId": "93B058523F377BBC",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-04-11T14:44:27.1237064Z",
+      "duration": "PT23.8787947S",
+      "trackingId": "2c485edf-eab8-4c34-a23a-d0474395d7b0",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Storage/storageAccounts/clusterazureshdistorage",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "clusterazureshdistorage"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Resources/deployments/HDInsight__2020-04-11T14.43.57.626Z/operations/08586149906441871665",
+    "operationId": "08586149906441871665",
+    "properties": {
+      "provisioningOperation": "EvaluateDeploymentOutput",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-04-11T14:57:59.4951657Z",
+      "duration": "PT0.1318118S",
+      "trackingId": "a2a2d914-7525-43c6-914e-517c1f837149",
+      "statusCode": "OK",
+      "statusMessage": null
+    }
+  }
+]

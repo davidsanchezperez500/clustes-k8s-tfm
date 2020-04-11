@@ -1,0 +1,110 @@
+{
+  "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Resources/deployments/HDInsight__2020-04-11T14.43.57.626Z",
+  "name": "HDInsight__2020-04-11T14.43.57.626Z",
+  "type": "Microsoft.Resources/deployments",
+  "tags": {
+    "primaryResourceId": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourcegroups/GrupoRecursosClusterHDInsight/providers/Microsoft.HDInsight/clusters/cluster-azure-spark",
+    "marketplaceItemId": ""
+  },
+  "properties": {
+    "templateHash": "16544792525147448356",
+    "parameters": {
+      "clusterName": {
+        "type": "String",
+        "value": "cluster-azure-spark"
+      },
+      "clusterLoginUserName": {
+        "type": "String",
+        "value": "admin"
+      },
+      "clusterLoginPassword": {
+        "type": "SecureString"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "clusterVersion": {
+        "type": "String",
+        "value": "4.0"
+      },
+      "clusterWorkerNodeCount": {
+        "type": "Int",
+        "value": 2
+      },
+      "clusterKind": {
+        "type": "String",
+        "value": "SPARK"
+      },
+      "sshUserName": {
+        "type": "String",
+        "value": "sshuser"
+      },
+      "sshPassword": {
+        "type": "SecureString"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2020-04-11T14:57:59.6268001Z",
+    "duration": "PT13M58.3363402S",
+    "correlationId": "1c786ecd-60ec-4b15-816e-16004dececee",
+    "providers": [
+      {
+        "namespace": "Microsoft.HDInsight",
+        "resourceTypes": [
+          {
+            "resourceType": "clusters",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Storage",
+        "resourceTypes": [
+          {
+            "resourceType": "storageAccounts",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Storage/storageAccounts/clusterazureshdistorage",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "clusterazureshdistorage"
+          },
+          {
+            "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Storage/storageAccounts/clusterazureshdistorage",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "clusterazureshdistorage",
+            "actionName": "listKeys",
+            "apiVersion": "2015-05-01-preview"
+          }
+        ],
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.HDInsight/clusters/cluster-azure-spark",
+        "resourceType": "Microsoft.HDInsight/clusters",
+        "resourceName": "cluster-azure-spark"
+      }
+    ],
+    "outputResources": [
+      {
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.HDInsight/clusters/cluster-azure-spark"
+      },
+      {
+        "id": "/subscriptions/6cbdad4a-3cd8-4619-abb9-f9370c9cdab7/resourceGroups/GrupoRecursosClusterHDInsight/providers/Microsoft.Storage/storageAccounts/clusterazureshdistorage"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}

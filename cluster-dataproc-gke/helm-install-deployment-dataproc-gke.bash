@@ -25,3 +25,10 @@ helm install  $DEPLOYMENT dataproc/dataproc-sparkoperator --namespace $NAMESPACE
 --set bucket=$BUCKET_NAME \
 --set alphaWhitelistToken=$PROVIDED_TOKEN \
 --set operatorVersion=latest
+
+
+#Exporta la descripcion
+#gcloud beta dataproc clusters describe $CLUSTER --region=$REGION > description-cluster-$CLUSTER.yaml
+
+# Exportar la configuración
+#gcloud beta dataproc clusters export $CLUSTER --region=$REGION --destination values-cluster-$CLUSTER.yaml

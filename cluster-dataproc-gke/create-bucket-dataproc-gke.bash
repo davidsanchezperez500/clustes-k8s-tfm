@@ -6,7 +6,7 @@ gcloud config set compute/zone us-central1-b
 
 # Creo las variables de entorno
 PROJECT=$(gcloud config get-value core/project)
-BUCKET_NAME=bucket-dataproc-gke-1
+BUCKET_NAME=bucket-$PROJECT-1
 FILE_LOCAL=/home/david/repos/tfm-compara-cloud/jobs-pyspark/hello-world-local.py
 REGION=us-central1
 

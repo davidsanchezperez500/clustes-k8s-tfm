@@ -14,14 +14,14 @@
         "location": {
             "value": "eastus"
         },
+        "clusterVersion": {
+            "value": "4.0"
+        },
         "clusterWorkerNodeCount": {
             "value": 2
         },
         "clusterKind": {
             "value": "SPARK"
-        },
-        "clusterVersion": {
-            "value": "4.0"
         },
         "sshUserName": {
             "value": "sshuser"

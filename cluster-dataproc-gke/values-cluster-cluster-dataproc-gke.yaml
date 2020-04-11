@@ -1,5 +1,6 @@
 config:
-  configBucket: bucket-dataproc-gke
+  configBucket: bucket-dataproc-gke-1
+  endpointConfig: {}
   gceClusterConfig:
     networkUri: https://www.googleapis.com/compute/v1/projects/dataproc-gke/global/networks/default
     serviceAccountScopes:
