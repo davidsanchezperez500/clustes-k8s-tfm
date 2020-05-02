@@ -17,7 +17,8 @@ resource "google_dataproc_cluster" "cluster-dataproc" {
   }
 
   cluster_config {
-    #staging_bucket = "${var.staging_bucket}"
+    staging_bucket = "${var.staging_bucket_dataproc}"
+
 
     master_config {
       num_instances = 1

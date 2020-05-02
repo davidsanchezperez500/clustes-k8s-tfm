@@ -1,13 +1,13 @@
-#Clonamos el repositorio
+#Clono el repositorio
 git clone -b branch-2.4 https://github.com/apache/spark
 
-#Cambie al directorio del repositorio clonado
-#y guarde la ruta de acceso al código fuente de Spark en una variable.
+#Cambio al directorio del repositorio clonado
+#y guardo la ruta de acceso al código fuente de Spark en una variable.
 
 cd spark
 sparkdir=$(pwd)
 
-#Ejecute el siguiente comando
+#Ejecuto el siguiente comando
 #para compilar el código fuente de Spark con compatibilidad con Kubernetes.
 
 ./build/mvn -Pkubernetes -DskipTests clean package
@@ -53,7 +53,7 @@ REGISTRY_TAG=v1
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 
-#Preparamos el trabajo de spark
+#Preparo el trabajo de spark
 mkdir myprojects
 cd myprojects
 sbt new sbt/scala-seed.g8
@@ -76,7 +76,7 @@ EOT
 sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 
-#empaquetar el proyecto en un jar
+#empaqueto el proyecto en un jar
 sbt assembly
 
 #Packaging /home/david/repos/spark/myprojects/sparkpi/target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar ...

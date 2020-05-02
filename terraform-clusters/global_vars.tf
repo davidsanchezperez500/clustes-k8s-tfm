@@ -27,9 +27,14 @@ variable "name_cluster_dataproc_gke" {
   description = "Nombre del cluster GKE"
 }
 
-variable "staging_bucket" {
+variable "staging_bucket_dataproc" {
   type        = string
-  default     = "dataproc-staging-bucket"
+  default     = "bucket-dataproc-21"
+  description = "Nombre del bucket"
+}
+variable "staging_bucket_dataproc_gke" {
+  type        = string
+  default     = "bucket-dataproc-gke"
   description = "Nombre del bucket"
 }
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Me conecto al proyecto
 gcloud config set project dataproc-21
 gcloud config set dataproc/region us-central1
@@ -14,7 +16,7 @@ BUCKET_NAME=bucket-$PROJECT
 # Creo el cluster dataproc
 gcloud beta dataproc clusters create $CLUSTER \
 --project $PROJECT \
---bucket $BUCKET \
+--bucket $BUCKET_NAME \
 --optional-components=ANACONDA,JUPYTER \
 --enable-component-gateway \
 --region $REGION \

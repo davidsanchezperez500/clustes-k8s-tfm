@@ -1,3 +1,5 @@
+#creo el grupo de recursos
+
 az group create \
   --name GrupoRecursosClusterK8s \
   --location eastus
@@ -11,6 +13,7 @@ az group create \
 
 #az ad sp create-for-rbac --skip-assignment
 
+#Creo una entidad de servicio para el clúster.
 az ad sp create-for-rbac --name SparkSP
 "appId": "2bc77b48-abc7-4640-a0b9-dac75a3d0a39",
 "displayName": "SparkSP",
@@ -35,7 +38,7 @@ az ad sp create-for-rbac --name SparkSP
 # --client-secret <password> \
 
 
-#creamos el ClusterK8s
+#Creo el Cluster de Kubernetes
 az aks create \
     --resource-group GrupoRecursosClusterK8s \
     --name ClusterK8s \
@@ -52,12 +55,12 @@ az aks create \
     #--vnet-subnet-id $SUBNET_ID \
 
 
-#nos conectamos al cluster
+#Me conectamos al cluster
 az aks get-credentials \
   --resource-group GrupoRecursosClusterK8s \
   --name ClusterK8s
 
-#creamos el container registry
+#Creo el container registry
 az acr create \
 --resource-group GrupoRecursosClusterK8s \
 --name imagenclusterk8s \

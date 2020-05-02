@@ -1,4 +1,4 @@
-#Cree una cuenta de Azure Storage y un contenedor para almacenar el archivo jar.
+#Creo una cuenta de Azure Storage y un contenedor para almacenar el archivo jar.
 
 RESOURCE_GROUP=sparkdemo
 STORAGE_ACCT=sparkdemo$RANDOM
@@ -16,7 +16,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
   --resource-group $RESOURCE_GROUP \
   --name $STORAGE_ACCT -o tsv`
 
-#Cargue el archivo jar en la cuenta de Azure Storage con los siguientes comandos.
+#Carguo el archivo jar en la cuenta de Azure Storage con los siguientes comandos.
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar

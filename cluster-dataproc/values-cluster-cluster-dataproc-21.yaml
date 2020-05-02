@@ -1,14 +1,20 @@
 config:
-  configBucket: dataproc-staging-us-central1-242237202548-25fkfkwo
+  configBucket: bucket-dataproc-21
   endpointConfig:
     enableHttpPortAccess: true
+    httpPorts:
+      HDFS NameNode: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/hdfs/dfshealth.html
+      Jupyter: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/jupyter/
+      JupyterLab: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/jupyter/lab/
+      MapReduce Job History: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/jobhistory/
+      Spark History Server: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/sparkhistory/
+      Tez: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/apphistory/tez-ui/
+      YARN Application Timeline: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/apphistory/
+      YARN ResourceManager: https://xaksade7hjaqxmz25qayvdwyce-dot-us-central1.dataproc.googleusercontent.com/yarn/
   gceClusterConfig:
     serviceAccountScopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/bigtable.admin.table
-    - https://www.googleapis.com/auth/bigtable.data
+    - https://www.googleapis.com/auth/cloud-platform
     - https://www.googleapis.com/auth/cloud.useraccounts.readonly
-    - https://www.googleapis.com/auth/devstorage.full_control
     - https://www.googleapis.com/auth/devstorage.read_write
     - https://www.googleapis.com/auth/logging.write
     subnetworkUri: https://www.googleapis.com/compute/v1/projects/dataproc-21/regions/us-central1/subnetworks/default
@@ -17,12 +23,13 @@ config:
     diskConfig:
       bootDiskSizeGb: 100
       bootDiskType: pd-ssd
-    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200313-145333-rc01
+    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200409-000000-rc01
     machineTypeUri: https://www.googleapis.com/compute/v1/projects/dataproc-21/zones/us-central1-b/machineTypes/n1-standard-2
     minCpuPlatform: AUTOMATIC
     numInstances: 1
+    preemptibility: NON_PREEMPTIBLE
   softwareConfig:
-    imageVersion: 1.4.25-ubuntu18
+    imageVersion: 1.4.27-ubuntu18
     optionalComponents:
     - JUPYTER
     - ANACONDA
@@ -82,7 +89,8 @@ config:
     diskConfig:
       bootDiskSizeGb: 50
       bootDiskType: pd-ssd
-    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200313-145333-rc01
+    imageUri: https://www.googleapis.com/compute/v1/projects/cloud-dataproc/global/images/dataproc-1-4-ubu18-20200409-000000-rc01
     machineTypeUri: https://www.googleapis.com/compute/v1/projects/dataproc-21/zones/us-central1-b/machineTypes/n1-standard-2
     minCpuPlatform: AUTOMATIC
     numInstances: 2
+    preemptibility: NON_PREEMPTIBLE
