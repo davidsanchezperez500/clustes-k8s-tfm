@@ -7,63 +7,49 @@ gcloud config set project dataproc-gke
 # Creo las variables de entorno
 PROJECT=$(gcloud config get-value core/project)
 REGION=$(gcloud config get-value compute/region)
-GKE_CLUSTER=gke
-BUCKET_NAME=bucket-$PROJECT-1
-MACHINE_TIPE=n1-standard-4
+BUCKET=bucket-$PROJECT-1
+
+GKE_CLUSTER=cluster-$PROJECT
+GKE_CLUSTER_VERSION="1.14.10-gke.27"
+GKE_IMAGE_TYPE="COS"
+
+DATAPROC_CLUSTER=dataproc-$GKE_CLUSTER
+DATAPROC_VERSION="1.4.27-beta"
+
+MACHINE_TIPE=n1-standard-2
+DISK_TYPE="pd-ssd"
+SCOPES=cloud-platform
+
+NAMESPACE=spark
 
 #Creo el cluste en gke
 
-gcloud beta container clusters create $GKE_CLUSTER \
+gcloud beta container --project $PROJECT clusters create $GKE_CLUSTER \
+--region $REGION \
+--no-enable-basic-auth \
+--cluster-version $GKE_CLUSTER_VERSION \
 --machine-type $MACHINE_TIPE \
+--image-type $GKE_IMAGE_TYPE \
+--disk-type $DISK_TYPE \
+--metadata disable-legacy-endpoints=true \
 --preemptible \
 --num-nodes 1 \
+--enable-stackdriver-kubernetes \
+--enable-ip-alias \
 --workload-metadata-from-node GCE_METADATA \
---scopes cloud-platform \
+--addons HorizontalPodAutoscaling,HttpLoadBalancing \
+--scopes $SCOPES \
 --disk-type pd-ssd \
 --disk-size 75 \
 --region $REGION \
---node-locations "us-central1-b","us-central1-a"
+--enable-autoupgrade \
+--enable-autorepair \
+--node-locations $REGION-b,$REGION-c,$REGION-a \
 
+#creo el namespace
+kubectl create namespace spark
 
-# gcloud beta container --project "dataproc-gke" clusters create $CLUSTER \
-# --zone "us-central1-b" \
-# --no-enable-basic-auth \
-# --cluster-version "1.14.10-gke.27" \
-# --machine-type "n1-standard-2" \
-# --image-type "COS" \
-# --disk-type "pd-ssd" \
-# --disk-size "75" \
-# --metadata disable-legacy-endpoints=true \
-# --scopes "https://www.googleapis.com/auth/cloud-platform" \
-# --preemptible \
-# --num-nodes "1" \
-# --enable-stackdriver-kubernetes \
-# --enable-ip-alias \
-# --network "projects/dataproc-gke/global/networks/default" \
-# --subnetwork "projects/dataproc-gke/regions/us-central1/subnetworks/default" \
-# --default-max-pods-per-node "110" \
-# --no-enable-master-authorized-networks \
-# --addons HorizontalPodAutoscaling,HttpLoadBalancing \
-# --enable-autoupgrade \
-# --enable-autorepair \
-# --workload-metadata-from-node GCE_METADATA \
-# --node-locations "us-central1-b","us-central1-a","us-central1-c" \
-
-#!/bin/bash
-
-# # Me conecto al proyecto
-# gcloud config set project dataproc-gke
+# 
+# gcloud beta dataproc clusters export $DATAPROC_CLUSTER --region=$REGION --destination values-cluster-$DATAPROC_CLUSTER.yaml
 #
-# PROJECT=$(gcloud config get-value core/project)
-# REGION=$(gcloud config get-value compute/region)
-# DATAPROC_CLUSTER=dataproc3
-# VERSION="1.4.27-beta"
-# BUCKET_NAME=bucket-$PROJECT-1
-# GKE_CLUSTER=gke
-#
-#
-# gcloud beta dataproc clusters create $DATAPROC_CLUSTER \
-#     --gke-cluster=$GKE_CLUSTER\
-#     --region $REGION \
-#     --image-version=$VERSION \
-#     --bucket=$BUCKET_NAME \
+# gcloud beta dataproc clusters describe $DATAPROC_CLUSTER --region=$REGION > description-cluster-$DATAPROC_CLUSTER.yaml

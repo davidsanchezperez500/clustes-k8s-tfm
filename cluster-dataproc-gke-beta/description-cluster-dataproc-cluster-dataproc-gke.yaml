@@ -1,0 +1,21 @@
+clusterName: dataproc-cluster-dataproc-gke
+clusterUuid: 34ffcfce-14b6-4b4e-8893-fd9d5096e0e8
+config:
+  configBucket: bucket-dataproc-gke-1
+  gkeClusterConfig:
+    namespacedGkeDeploymentTarget:
+      clusterNamespace: spark
+      targetGkeCluster: projects/dataproc-gke/locations/us-central1/clusters/cluster-dataproc-gke
+  softwareConfig:
+    imageVersion: 1.4.27-beta
+labels:
+  goog-dataproc-cluster-name: dataproc-cluster-dataproc-gke
+  goog-dataproc-cluster-uuid: 34ffcfce-14b6-4b4e-8893-fd9d5096e0e8
+  goog-dataproc-location: us-central1
+projectId: dataproc-gke
+status:
+  state: RUNNING
+  stateStartTime: '2020-05-02T10:53:12.548Z'
+statusHistory:
+- state: CREATING
+  stateStartTime: '2020-05-02T10:52:56.783Z'

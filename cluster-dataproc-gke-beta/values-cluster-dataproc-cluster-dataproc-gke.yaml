@@ -1,0 +1,8 @@
+config:
+  configBucket: bucket-dataproc-gke-1
+  gkeClusterConfig:
+    namespacedGkeDeploymentTarget:
+      clusterNamespace: spark
+      targetGkeCluster: projects/dataproc-gke/locations/us-central1/clusters/cluster-dataproc-gke
+  softwareConfig:
+    imageVersion: 1.4.27-beta

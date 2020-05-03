@@ -43,3 +43,21 @@ variable "machine_type" {
   default     = "n1-standard-2"
   description = "Tipo de maquinas"
 }
+
+variable "disk_type" {
+  type        = string
+  default     = "pd-ssd"
+  description = "Tipo de maquinas"
+}
+
+variable "image_type" {
+  type        = string
+  default     = "COS"
+  description = "Versión de imagen de los nodos  gke"
+}
+
+variable "node_metadata" {
+  type        = string
+  default     = "GCE_METADATA"
+  description = ""
+}
