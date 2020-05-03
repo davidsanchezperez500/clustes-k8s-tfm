@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Creo una cuenta de Azure Storage y un contenedor para almacenar el archivo jar.
 
 RESOURCE_GROUP=sparkdemo
@@ -38,3 +40,18 @@ az storage blob upload \
 jarUrl=$(az storage blob url \
   --container-name $CONTAINER_NAME \
   --name $BLOB_NAME | tr -d '"')
+
+
+  #Inicio kube-proxy en otra shell con el código siguiente.
+  kubectl proxy
+
+  #Vuelvo a la shell anterior
+  cd $sparkdir
+
+  #crear cuenta de servicio
+  kubectl create serviceaccount spark
+
+  kubectl create clusterrolebinding spark-role \
+  --clusterrole=edit \
+  --serviceaccount=default:spark \
+  --namespace=default

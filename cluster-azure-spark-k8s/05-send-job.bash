@@ -24,4 +24,9 @@ kubectl create clusterrolebinding spark-role \
   $jarUrl
 
 
-kubectl kubectl port-forward spark-pi-1586796127251-driver 4040:4040 4040:4040
+kubectl port-forward spark-pi-1588515033897-driver 4040:4040 4040:4040
+
+spark-pi-1588509915528-driver
+
+
+spark-pi-1588515033897-driver
